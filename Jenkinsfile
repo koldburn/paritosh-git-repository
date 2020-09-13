@@ -13,7 +13,8 @@ pipeline {
         stage('TestA') {
           steps {
             sh 'echo this is test > batman_test.txt'
-            sh 'cat batman_build.txt'
+            unstash 'batsy'
+            sh 'cat batsy'
           }
         }
 
