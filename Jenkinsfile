@@ -3,22 +3,31 @@ pipeline {
   stages {
     stage('Fluffy Build') {
       steps {
-        echo 'i am batman build'
-        sh 'echo Edited Placeholder'
+        sh 'echo this is build > batman_build.txt'
       }
     }
 
     stage('Fluffy Test') {
-      steps {
-        echo 'i am batman test'
-        sleep 3
-        sh 'echo success!'
+      parallel {
+        stage('TestA') {
+          steps {
+            sh 'echo this is test > batman_test.txt'
+          }
+        }
+
+        stage('TestB') {
+          steps {
+            sh '''sleep 10
+echo done.'''
+          }
+        }
+
       }
     }
 
     stage('Fluffy Deploy') {
       steps {
-        echo 'i am batman deploy'
+        sh 'echo this is deploy > batman_deploy.txt'
       }
     }
 
