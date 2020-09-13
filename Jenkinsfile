@@ -31,9 +31,15 @@ echo done.'''
       }
     }
 
+    stage('GiveInput') {
+      steps {
+        input(message: 'can we proceed', ok: 'yea, go on dude')
+      }
+    }
+
     stage('Fluffy Deploy') {
       steps {
-        sh 'echo this is deploy > batman_deploy.txt'
+        echo 'this is deploy step'
       }
     }
 
