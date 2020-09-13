@@ -17,7 +17,7 @@ pipeline {
               unstash 'batsy'
             }
 
-            sh 'cat batsy'
+            sh 'cat batsy/batman.txt'
           }
         }
 
