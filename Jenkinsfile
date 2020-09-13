@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Fluffy Build') {
       steps {
-        sh "echo this is '${env.BUILD_NUMBER} ${city}'"
+        sh "echo this is '${env.BUILD_NUMBER} ${env.city}'"
       }
     }
 
