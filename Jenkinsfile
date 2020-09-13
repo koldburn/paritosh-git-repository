@@ -4,6 +4,7 @@ pipeline {
     stage('Fluffy Build') {
       steps {
         sh 'echo this is build > batman_build.txt'
+        stash(name: 'batsy', includes: 'batman_build.txt')
       }
     }
 
@@ -12,6 +13,8 @@ pipeline {
         stage('TestA') {
           steps {
             sh 'echo this is test > batman_test.txt'
+            unstash 'batsy'
+            sh 'cat batman_build.txt'
           }
         }
 
